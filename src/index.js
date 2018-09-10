@@ -1,22 +1,21 @@
-
 const util = require("./utils/util.js");
 class MyReq {
-    constructor(){
-        
+    constructor() {
+
     }
     // 初始化xhr
-    initialize(){
+    initialize() {
         let xhr = new XMLHttpRequest();
         return xhr;
     }
     // 获取res回调
-    getRes(){
+    getRes() {
         return new Promise((resolve, reject) => {
             this.xhr.onreadystatechange = () => {
-                if(this.xhr.readyState === 4) {
-                    if(this.xhr.status === 200){
-                        resolve(this.xhr.response)
-                    }else{
+                if (this.xhr.readyState === 4) {
+                    if (this.xhr.status === 200) {
+                        resolve(this.xhr.response);
+                    } else {
                         reject();
                     }
                 }
@@ -25,12 +24,12 @@ class MyReq {
     }
 
     // get请求
-    get(url, params = {}){
+    get(url, params = {}) {
         return new Promise((resolve, reject) => {
             this.xhr = this.initialize();
             let queryString = util.getQueryString(params);
             url = queryString ? `${url}?${queryString}` : url;
-            this.xhr.open("get",url,true);
+            this.xhr.open("get", url, true);
             this.getRes().then((res) => {
                 resolve(res);
             });
@@ -38,7 +37,7 @@ class MyReq {
         })
     }
 
-}  
+}
 
 let req = new MyReq();
 
