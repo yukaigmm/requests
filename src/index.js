@@ -45,3 +45,9 @@ module.exports = req;
 // req.get('https://www.apiopen.top/satinGodApi?type=1&page=1').then(res => {
 //     console.log(res)
 // })
+
+
+// 1.请求取消（生命周期）
+// 2.错误处理
+// 3.进度显示
+// 4.设置请求头
